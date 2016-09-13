@@ -1,0 +1,57 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+	<meta charset"ut-8">
+	<title>Pretty JSON</title>
+	<style>
+		h1, h2 {
+			text-align: center;
+		}
+		button {
+			height: 40px;
+			width: 80px;
+			display: block;
+		}
+		#source, #target {
+			padding: 5%;
+			border: 1px solid black;
+		}
+		#target {
+			min-height: 390px;
+		}
+		#source {
+			width: 90%;
+		}
+		.col {
+			width: 50%;
+			height: 100%;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<h1>Format JSON</h1>
+	<div class="col">
+		<h2>Paste Raw JSON</h2>
+		<textarea id ="source" rows=30>
+		</textarea>
+		<button id="trigger">Format</button>
+	</div>
+	<div class="col">
+		<h2>View Formatted JSON</h2>
+		<pre id="target">
+		</pre>
+	</div>
+	<script>
+		var trigger = document.getElementById('trigger');
+		var target = document.getElementById('target');
+		var source = document.getElementById('source');
+		
+		trigger.onclick = formatJSON;
+		
+		function formatJSON(e){
+			target.innerHTML =  JSON.stringify(JSON.parse(source.value.trim()), null, 2);
+		}
+	</script>
+</body>
+</html>
